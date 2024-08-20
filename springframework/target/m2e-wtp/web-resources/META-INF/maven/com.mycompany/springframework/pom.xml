@@ -41,10 +41,25 @@
     	<artifactId>log4j-slf4j-impl</artifactId>
     	<version>2.20.0</version>
 	</dependency>
-	
-	
+	<!-- Lombok 라이브러리설정 -->
+	<dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	    <version>1.18.34</version>
+	</dependency>
+	<!-- Spring Context 라이브러리 설정 -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>5.3.29</version>
+	</dependency>
+	<!-- spring webMVC 라이브러리설정 -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-webmvc</artifactId>
+	    <version>5.3.29</version>
+	</dependency>
   </dependencies>
-  
    <!-- 빌드할 떄 사용할 JDK 버전 및 WAR 파일 생성 플러그인을 등록-->
   <build>
     <plugins>

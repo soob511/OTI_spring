@@ -1,12 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
-  <display-name>springframework</display-name>
-  <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-  </welcome-file-list>
+  <!-- root webApplicationContext 없어도됨
+ 1)  WAS가 web.xml의 listener 태그를 해석할때 contextLoaderLister객체 생성
+  2) ContextLoaderLister객체는 내부에 Root webApplicationContext 생성
+  3) Root webApplicationContext 는 관리할 객체(빈) 설정 파일의 경로를 param-value태그에서 찾음
+   -->
+  <listener>
+  	<listener-class>
+  		org.springframework.web.context.ContextLoaderListener
+  	</listener-class>
+  </listener>
+  <context-param>
+  <!-- Root webApplicationContext가 사용할 빈 설정 파일 위치 -->
+  	<param-name>contextConfigLocation</param-name>
+  	<!-- <param-value>/WEB-INF/spring/root/config.xml</param-value> -->
+  	<!-- classpath는 WAR 파일 내부의 WEB-INF/classes폴더를 말함 -->
+  	<!-- src/main/java, src/main/resources 폴더의 내용들이 취합되어 classes에 들어감 -->
+	<param-value>classpath:spring/dispatcher/*.xml</param-value> 
+  </context-param>
+  
+  <!--[필수] =============================================== -->
+  <!-- 
+  1)was가 web.xml의 servlet태그를 해석할떄 DiispatcherServlet 객체생성
+  2)DispathcherServlet객체는 내부에 webApplicationContext 생성
+   3)webApplicationContext 는 관리할 객체(빈) 설정 파일의 경로를 param-value태그에서 찾음-->
+  <servlet>
+  	<servlet-name>dispatcher</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath:spring/dispatcher/*.xml</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup><!--was가 해석할때 만들어짐 없으면 만들어지는 시점 달라짐 브라우저가 처음 요청할때 (클라이언트가 최초로 요청했을때)-->
+  </servlet>
+  <!-- 브라우저(클라이언트)가 요청하는 모든 URL을 DispatcherServlet이 처리하도록 설정 -->
+  <servlet-mapping><!-- http://8080/springframework/ -->
+  	<servlet-name>dispatcher</servlet-name>
+  	<url-pattern>/</url-pattern><!-- 서블릿 여러개일때 달라야함 -->
+  </servlet-mapping>
 </web-app>

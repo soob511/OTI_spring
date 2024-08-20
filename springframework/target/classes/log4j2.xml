@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT"><!-- SYSTEM_ERR도 사용가능 -->
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36}.%M()- %msg%n"/>
+      <!-- 시간, 쓰레드, 다섯칸마련 좌측으로 정렬 ,로그레벨, 패키지,클래스이름, 로그 메시지 개행 %M(메소드이름출력)-->
+    </Console>
+  </Appenders>
+  <Loggers>
+    <Root level="error"><!-- Root - main/java --><!-- 외부라이브러리포함 가능하면 error로 설정 -->
+      <AppenderRef ref="Console"/>
+    </Root>
+    <Logger name="com.mycompany.springframework" level="info" additivity="false"><!-- 특정패키지에서 발생하는 로그만 보고싶을떄 -->
+    <!-- level wran이상인것만, 중복출력  false -->
+    	  <AppenderRef ref="Console"/>
+    </Logger>
+  </Loggers>
+</Configuration>
