@@ -8,13 +8,9 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 public class Ch01Controller {
-	@RequestMapping("/ch01/login")
-	public void login() {
+	@RequestMapping("/ch01/content")
+	public String content() {
 		log.info("실행");
-	}
-	
-	@RequestMapping("/ch01/join")
-	public void join() {
-		log.info("실행");
+		return "ch01/content";
 	}
 }
