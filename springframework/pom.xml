@@ -11,7 +11,11 @@
   <version>1.0.0</version>
   <!-- Final Build File -->
   <packaging>war</packaging>
-
+	<!-- 반복되는 값을 참조하는 변수 선언 -->
+	<properties>
+		<!-- 변수명을 태그처럼 작성 -->
+		<springframework-version>5.3.29</springframework-version>
+	</properties>
   
   <!-- 프로젝트에서 의존하는 외부 라이브러리들을 설정 -->
   <dependencies>
@@ -51,13 +55,13 @@
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-context</artifactId>
-	    <version>5.3.29</version>
+	    <version>${springframework-version}</version>
 	</dependency>
 	<!-- spring webMVC 라이브러리설정 -->
 	<dependency>
 	    <groupId>org.springframework</groupId>
 	    <artifactId>spring-webmvc</artifactId>
-	    <version>5.3.29</version>
+	    <version>${springframework-version}</version>
 	</dependency>
   </dependencies>
    <!-- 빌드할 떄 사용할 JDK 버전 및 WAR 파일 생성 플러그인을 등록-->

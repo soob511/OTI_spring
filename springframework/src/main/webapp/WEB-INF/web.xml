@@ -16,7 +16,7 @@
   	<!-- <param-value>/WEB-INF/spring/root/config.xml</param-value> -->
   	<!-- classpath는 WAR 파일 내부의 WEB-INF/classes폴더를 말함 -->
   	<!-- src/main/java, src/main/resources 폴더의 내용들이 취합되어 classes에 들어감 -->
-	<param-value>classpath:spring/dispatcher/*.xml</param-value> 
+	<param-value>classpath:spring/root/*.xml</param-value> 
   </context-param>
   
   <!--[필수] =============================================== -->
@@ -38,4 +38,21 @@
   	<servlet-name>dispatcher</servlet-name>
   	<url-pattern>/</url-pattern><!-- 서블릿 여러개일때 달라야함 -->
   </servlet-mapping>
+  
+  <!-- [필수]=================================================== -->
+  <!-- Filter의 역할: DispatcherServlet이 실행되기전에 전처리하는 역할 
+  CharacterEncodingFilter의 역할: DispatcherServlet이 실행되기전에 한글 데이터를 복원하는 역할-->
+  <filter>
+  	<filter-name>charaterEncodingFilter</filter-name>
+  	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+  	<init-param>
+  			<param-name>encoding</param-name>
+  			<param-value>UTF-8</param-value>
+  	</init-param>
+  </filter>
+  <!-- 브라우저(클라이언트)가 요청하는 모든 url에 대해서 charaterEncodingFilter가 동작하도록 설정 -->
+  <filter-mapping>
+  		<filter-name>charaterEncodingFilter</filter-name>
+  		<url-pattern>/*</url-pattern><!-- 모든 요청이 들어올때 필터가 먼저 동작을 하겠다!! -->
+  </filter-mapping>
 </web-app>
