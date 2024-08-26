@@ -31,6 +31,11 @@
 	        			<ul>
 	        				<li><a href="${pageContext.request.contextPath}/ch02/getMethod">GET방식</a></li>
 	        				<li><a href="${pageContext.request.contextPath}/ch02/postMethod">POST방식</a></li>
+	        				<li><a href="${pageContext.request.contextPath}/ch02/returnModelAndView">ModelAndView</a></li>
+	        				<li><a href="${pageContext.request.contextPath}/ch02/returnVoid">void리턴</a></li>
+	        				<li><a href="${pageContext.request.contextPath}/ch02/returnObject">Object리턴</a></li>
+	        				<li><a href="${pageContext.request.contextPath}/ch02/mypage">Mypage(로그인 체크 여부 확인)</a></li>
+	        				<li><a href="${pageContext.request.contextPath}/ch02/loginForm">로그인/로그아웃</a></li>
 	        			</ul>
 	        		</div>
 	    		</div>

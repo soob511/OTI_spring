@@ -22,13 +22,69 @@
 				</div>
 					<div class="mb-3">
 					  <label for="bkind" class="form-label">게시물 종류</label>
-					  <input type="text" class="form-control" id="bkind" name=" bkind" value="free">
+					  <input type="text" class="form-control" id="bkind" name="bkind" value="free">
 					  
 				</div>
 				
 				<input type="submit" value= "제출"  class="btn btn-info btn-sm"/>
 			</form>
 		</div>
+		
+		<hr/>
+		<div class="mt-2">
+			<button onclick="requestGet1()" class="btn btn-info btn-sm mb-2">JavaScript: location.href 속성이용</button>
+			<br><br>
+			<button onclick="requestGet2()" class="btn btn-info btn-sm mb-2">JavaScript: AJAX 이용</button>
+			<div id="ajaxResult" class="border mt-2">
+				AJAX 결과
+			</div>
+			<button onclick="requestGet3()" class="btn btn-info btn-sm mb-2">JavaScript: JSON이용</button>
+			<script>
+				function requestGet1(){
+					location.href="getLocationHref?bno=5&bkind=free"
+				}
+				
+				function requestGet2(){
+					$.ajax({
+						url:"getAjax1",
+						method:"get",
+						//data:"bno=5&bkind=free"
+						//data:{bno:5, bkind:"free"},
+						success: function(data){
+							//data가 HTML 조각일 경우
+							$("#ajaxResult").html(data);
+							//documemt.querySelector("#ajaxResult").innerHTML = data;
+						}
+					})
+				}
+				
+				function requestGet3(){
+					$.ajax({
+						url:"getAjax2",
+						method:"get",
+						//data:"bno=5&bkind=free"
+						//data:{bno:5, bkind:"free"},
+						success: function(data){
+							//data가 JSON일 경우
+							   console.log(data);     
+							var content= "";
+							 	content += "<div class='card'>";
+							 	content+="<div class='card-header'>AJAX의 json응답</div>"
+							 	content+="<div class='card-body'>;"
+							 	data.data.forEach( function (item) { 
+				                      content += "<img height='100' src='${pageContext.request.contextPath}/resources/image/photos/" +item +"' class='me-2'>"
+				                 });
+							 	content+= "</div>";
+							 	content +="</div>"
+							 	$("#ajaxResult").html(content);
+						}
+					})
+				}
+			</script>
+		
+		</div>
+		
+		
 	</div>
 </div>
 <jsp:include page="/WEB-INF/views/common/bottom.jsp"></jsp:include> 
