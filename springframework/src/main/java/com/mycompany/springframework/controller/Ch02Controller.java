@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.mycompany.springframework.dto.Ch02LoginResult;
+import com.mycompany.springframework.interceptor.LoginCheck;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -156,6 +156,7 @@ public class Ch02Controller {
 			return obj;
 		}
 		
+		@LoginCheck
 		@GetMapping("/mypage")
 		public String mypage() {
 			log.info("실행");
