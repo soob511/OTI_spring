@@ -23,7 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @Controller
 @Slf4j
 @RequestMapping("/ch03")
-public class ch03Controller {
+public class Ch03Controller {
 	
 	@GetMapping("/receiveParamData")
 	public String receiveParamData(String param1,
@@ -133,7 +133,7 @@ public class ch03Controller {
 		log.info("param1: "+dto.getParam5());
 		
 		//JSP로 데이터 전달 CommandObject를 사용할 경우 자동으로 전달
-		//model.addAttribute("ch03Dtd",dto);
+		//model.addAttribute("ch03Dtd",dto); 소문자로 바꿔서 키이름으로 전달
 		
 		return "ch03/receiveCommandObject";
 	}
