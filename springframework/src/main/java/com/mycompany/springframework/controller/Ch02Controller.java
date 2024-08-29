@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,8 +25,9 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Ch02Controller {
 	@RequestMapping("/getMethod")
-	public String getMethod() {
+	public String getMethod(Model model) {
 		log.info("실행");
+		model.addAttribute("chNum","ch02");
 		return "ch02/getMethod";
 	}
 	
@@ -37,84 +39,94 @@ public class Ch02Controller {
 //	@RequestMapping( value="/getAtag", method=RequestMethod.GET)
 	//값을 여러개를 줘야하는 경우 default값은 반드시 value= 붙여야하고 다른 속성의 값은 그 속성 = 하고 값을 줘야함
 	@GetMapping("/getAtag")
-	public String getAtag(String bno,String bkind) {
+	public String getAtag(String bno,String bkind, Model model) {
 		
 		log.info("실행");
 		log.info("bno: "+bno);
 		log.info("kind: "+ bkind);
+		model.addAttribute("chNum","ch02");
 		return "ch02/getMethod";
 	}
 	
 	@GetMapping("/getFormTag")
-	public String getFormTag(String bno,String bkind) {
+	public String getFormTag(String bno,String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: "+bno);
 		log.info("bkind: "+ bkind);
+		model.addAttribute("chNum","ch02");
 		return "redirect:/";
 	}
 	
 	@GetMapping("/getLocationHref")
-	public String getLocationHref(String bno,String bkind) {
+	public String getLocationHref(String bno,String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: "+bno);
 		log.info("bkind: "+ bkind);
+		model.addAttribute("chNum","ch02");
 		return "ch02/getMethod";
 	}
 	
 	@GetMapping("/getAjax")
-	public String getAjax(String bno,String bkind) {
+	public String getAjax(String bno,String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: "+bno);
 		log.info("bkind: "+ bkind);
+		model.addAttribute("chNum","ch02");
 		return "ch02/getMethod";
 	}
 	
 	@GetMapping("/getAjax1")
-	public String getAjax1(String bno,String bkind) {
+	public String getAjax1(String bno,String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: "+bno);
 		log.info("bkind: "+ bkind);
+		model.addAttribute("chNum","ch02");
 		return "ch02/AjaxFragmentHtml";
 	}
 	
 	@GetMapping("/getAjax2")
-	public String getAjax2() {
+	public String getAjax2(Model model) {
 		log.info("실행");
+		model.addAttribute("chNum","ch02");
 		return "ch02/AjaxJSON";
 	}
 	
 	@GetMapping("/postMethod")//a태그
-	public String postMethod() {
+	public String postMethod(Model model) {
 		log.info("실행");
+		model.addAttribute("chNum","ch02");
 		return "ch02/postMethod";
 	}
 	
 	@PostMapping("/postFormTag")
-	public String postFormTag(String bno, String bkind) {
+	public String postFormTag(String bno, String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: "+bno);
 		log.info("bkind: "+ bkind);
+		model.addAttribute("chNum","ch02");
 		return "redirect:/"; //home으로 돌아감
 	}
 	
 	@PostMapping("/postAjax1")
-	public String postAjax1(String bno,String bkind) {
+	public String postAjax1(String bno,String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: "+bno);
 		log.info("bkind: "+ bkind);
+		model.addAttribute("chNum","ch02");
 		return "ch02/AjaxFragmentHtml";
 	}
 	
 	@PostMapping("/postAjax2")
-	public String postAjax2(String bno,String bkind) {
+	public String postAjax2(String bno,String bkind, Model model) {
 		log.info("실행");
 		log.info("bno: "+bno);
 		log.info("bkind: "+ bkind);
+		model.addAttribute("chNum","ch02");
 		return "ch02/AjaxJSON";
 	}
 	
 	@GetMapping("/returnModelAndView")
-	public ModelAndView returnModelAndView() {
+	public ModelAndView returnModelAndView(Model model) {
 		log.info("실행");
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("bno",15);//jsp에서 사용할 데이터
@@ -122,6 +134,7 @@ public class Ch02Controller {
 		mav.addObject("mid","user1");
 		mav.addObject("memail","user1@mycompany.com");
 		mav.setViewName("/ch02/returnModelAndView");
+		mav.addObject("chNum","ch02");
 		return mav;
 	}
 	
@@ -152,20 +165,21 @@ public class Ch02Controller {
 			Ch02LoginResult obj = new Ch02LoginResult();
 			obj.setResult("success");
 			obj.setMid("user1");
-			
 			return obj;
 		}
 		
 		@LoginCheck
 		@GetMapping("/mypage")
-		public String mypage() {
+		public String mypage(Model model) {
 			log.info("실행");
+			model.addAttribute("chNum","ch02");
 			return "ch02/mypage";
 		}
 		
 		@GetMapping("/loginForm")
-		public String loginForm() {
+		public String loginForm(Model model) {
 			log.info("실행");
+			model.addAttribute("chNum","ch02");
 			return"ch02/loginForm";
 		}
 		

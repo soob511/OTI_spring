@@ -48,8 +48,8 @@ public class Ch05Controller {
 		Cookie cookie1 = new Cookie("mid","user1");
 		//cookie1.setMaxAge(60);//클라이언트 파일 시스템에 저장하는 기간 설정 ( 없으면 브라우저 메모리에 저장)
 		//cookie1.setDomain("samsung.com");  *.samsung.com 도메인이 포함된 사이트에 쿠키를 다들고감
-		//cookie1.setSecure(true); 브라우저에서 수정 x ( 자바스크립트로 브라우저로 쿠키값 수정 가능)
-		//cookie1.setHttpOnly(true); http에서는 읽기만 가능하다 https에서는 수정 가능
+		// cookie1.setSecure(true); // 쿠키가 HTTPS 연결에서만 전송되도록 설정합니다.
+		// cookie1.setHttpOnly(true); // 이 쿠키는 자바스크립트에서 접근할 수 없으며, 서버에서만 접근 가능합니다.
  		Cookie cookie2 = new Cookie("memail","user1@mycompany.com");
 		//쿠키를 응답헤더에 추가해서 브라우저로 보냄
 		response.addCookie(cookie1);
