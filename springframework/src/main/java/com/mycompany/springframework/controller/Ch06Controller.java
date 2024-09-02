@@ -55,7 +55,7 @@ public class Ch06Controller {
 	@GetMapping("/sessionData")
 	public String sessionData(HttpSession session) {
 		// 세션에서 찾아오기
-		Ch06Member member = (Ch06Member) session.getAttribute("member");
+		//Ch06Member member = (Ch06Member) session.getAttribute("member");
 
 		return "ch06/sessionData";
 	}

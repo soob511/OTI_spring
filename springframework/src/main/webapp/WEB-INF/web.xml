@@ -31,8 +31,25 @@
   		<param-name>contextConfigLocation</param-name>
   		<param-value>classpath:spring/dispatcher/*.xml</param-value>
   	</init-param>
+  	<init-param>
+  		<param-name>throwExceptionIfNoHandlerFound</param-name>
+  		<param-value>true</param-value>
+  	</init-param>
+  	
+  	
+  	
   	<load-on-startup>1</load-on-startup><!--was가 해석할때 만들어짐 없으면 만들어지는 시점 달라짐 브라우저가 처음 요청할때 (클라이언트가 최초로 요청했을때)-->
+  
+  <!-- multipart/form-data를 해석하기 위한 설정-->
+	<multipart-config>
+		<location>C:/Temp</location> <!-- 임시 파일이 저장될 폴더의 절대 경로만 가능 -->
+		<max-file-size>20971520</max-file-size><!-- 20MB까지 허용 -->
+		<max-request-size>104857600</max-request-size>
+		<file-size-threshold>1024</file-size-threshold><!-- 단위가 바이트 -->
+	</multipart-config>
+
   </servlet>
+  
   <!-- 브라우저(클라이언트)가 요청하는 모든 URL을 DispatcherServlet이 처리하도록 설정 -->
   <servlet-mapping><!-- http://8080/springframework/ -->
   	<servlet-name>dispatcher</servlet-name>
@@ -66,4 +83,12 @@
   	<filter-name>LoginCheckFilter</filter-name>
   	<url-pattern>/*</url-pattern>
   </filter-mapping> -->
+  
+  
+  <!-- 
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/WEB-INF/views/ch10/404.jsp</location>
+  </error-page>
+   -->
 </web-app>

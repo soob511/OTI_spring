@@ -1,9 +1,5 @@
 package com.mycompany.springframework.controller;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,10 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.mycompany.springframework.dto.Ch06Cart;
-import com.mycompany.springframework.dto.Ch06Item;
-import com.mycompany.springframework.dto.Ch06Member;
 
 import lombok.extern.slf4j.Slf4j;
 
