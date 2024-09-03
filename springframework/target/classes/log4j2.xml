@@ -14,5 +14,9 @@
     <!-- level wran이상인것만, 중복출력  false -->
     	  <AppenderRef ref="Console"/>
     </Logger>
+    
+      <Logger name="jdbc.sqltiming" level="info" additivity="false">
+    	  <AppenderRef ref="Console"/>
+    </Logger>
   </Loggers>
 </Configuration>

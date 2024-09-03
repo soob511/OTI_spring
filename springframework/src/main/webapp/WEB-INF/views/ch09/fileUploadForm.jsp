@@ -42,7 +42,7 @@
                     <input type="file" multiple="multiple" class="form-control-file" id="attach" name="attach">
                   </div>
                   
-                  <!-- 방법1 -->
+                  <!-- 방법2 -->
                   <button type="submit" class="mt-2 btn btn-info btn-sm">멀티 파일 업로드</button>
              </form>
              
