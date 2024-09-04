@@ -8,13 +8,38 @@
          - mapper-config.xml에서 정의한 alias 이름..이면서 
          - 인터페이스(DAO) 추상메서드의 매개변수가 됨 -->
    <insert id="insert" parameterType="Board">
-      <!-- bno는 값을 알 수 x -> nextval값 -->
+       <!-- keyProperty에  'seq_bno.nextval' 저장-->
+      <selectKey keyProperty="bno" resultType="int" order="BEFORE">
+         select seq_bno.nextval from dual
+      </selectKey>
       insert into board (
          bno, btitle, bcontent, bdate, mid, bhitcount, 
             battachoname, battachsname, battachtype, battachdata
       ) values (
-         seq_bno.nextval, #{btitle}, #{bcontent}, sysdate, #{mid},  0,
+         #{bno}, #{btitle}, #{bcontent}, sysdate, #{mid},  0,
          #{battachoname}, #{battachsname},   #{battachtype},   #{battachdata}
       )
    </insert>
+   
+   <!-- <![CDATA[~문자열로 인식~]] -->
+   <!-- resultType: 하나의 행에 대한 객체타입 -->
+   <select id="selectList" parameterType="Pager" resultType="Board">
+      <![CDATA[
+         select  bno, btitle, mid, bdate, bhitcount
+         from    (
+                     select rownum as rnum, bno, btitle, mid, bdate, bhitcount
+                     from (
+                             select bno, btitle, mid, bdate, bhitcount
+                             from board
+                             order by bno desc
+                     )
+                   where rownum <= #{endRowNo}
+             )
+            where rnum >= #{startRowNo}
+      ]]>
+   </select>
+   
+   <select id="countRows" resultType="int">
+      select count(*) from board
+   </select>
 </mapper>

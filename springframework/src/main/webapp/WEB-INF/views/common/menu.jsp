@@ -217,6 +217,7 @@
     <div class="accordion-body">
       <ul>
         <li><a href="${pageContext.request.contextPath}/ch13/writeBoardForm">게시물쓰기</a></li>
+          <li><a href="${pageContext.request.contextPath}/ch13/boardList">게시물목록</a></li>
       </ul>
     </div>
   </div>
