@@ -24,7 +24,8 @@ public class Ch13BoardService {
 	}
 	
 	public Ch13Board getBoard(int bno) {
-		return null;
+		Ch13Board board = boardDao.selectByBno(bno);
+		return board;
 	}
 	
 	public void writeBoard(Ch13Board board) {
@@ -37,15 +38,27 @@ public class Ch13BoardService {
 	}
 	
 	public void updateBoard(Ch13Board board) {
-		
+		boardDao.update(board);
 	}
 	
 	public void deleteBoard(int bno) {
-		
+		boardDao.delete(bno);
 	}
 
 	public int getTotalRows() {
 		int totalRows = boardDao.countRows();
 		return totalRows;
 	}
+
+	public Ch13Board getBoardAttach(int bno) {
+		Ch13Board board = boardDao.selectAttachByBno(bno);
+		return board;
+	}
+
+	public void addHitCount(int bno) {
+		boardDao.updateHitcount(bno);
+		
+	}
+
+	
 }

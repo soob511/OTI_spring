@@ -15,6 +15,11 @@
 		
 	</bean>
 	
+	<!-- 예전 방식으로 Dao를 만들기 위한 설정 -->
+	<bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
+	</bean>
+	
 	<!-- @Mapper(관리객체를생성)를 사용하기 위한 설정  -->
 	<mybatis-spring:scan base-package="com.mycompany.springframework.dao.mybatis"
 		annotation = "org.apache.ibatis.annotations.Mapper"/>

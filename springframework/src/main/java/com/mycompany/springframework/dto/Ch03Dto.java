@@ -15,5 +15,4 @@ public class Ch03Dto {
 	private boolean param4;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date param5;
-
 }
