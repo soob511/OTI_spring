@@ -121,9 +121,9 @@ public class Ch13Controller {
 		response.setContentType(contentType);
 		
 		//파일로 저장하기 위한 설정
-		String fileName = board.getBattachoname();
+	/*	String fileName = board.getBattachoname();
 		String encodingFileName = new String(fileName.getBytes("UTF-8"),"ISO-8859-1");
-		response.setHeader("Content-Disposition","attachment; filename=\""+encodingFileName+"\"");
+		response.setHeader("Content-Disposition","attachment; filename=\""+encodingFileName+"\"");*/
 		
 		//응답 본문에 파일데이터를 출력 
 		OutputStream out = response.getOutputStream();
