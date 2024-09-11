@@ -3,9 +3,9 @@ package com.mycompany.springframework.service;
 import java.util.List;
 
 import javax.annotation.Resource;
-import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.mycompany.springframework.dao.mybatis.Ch13AccountDao;
 import com.mycompany.springframework.dto.Ch13Account;
